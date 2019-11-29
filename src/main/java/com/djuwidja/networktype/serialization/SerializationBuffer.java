@@ -7,7 +7,7 @@ package com.djuwidja.networktype.serialization;
 
 import java.nio.ByteBuffer;
 /**
- * Elastic buffer to write large byte array for serialization. Mostly for serializing MQDict.
+ * Elastic buffer to write large byte array for serialization. Mostly for serializing {@link NTDict}.
  * @author kennethdjuwidja
  * @since 1.0.0
  * @version 1.0.0

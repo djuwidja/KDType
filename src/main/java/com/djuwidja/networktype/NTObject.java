@@ -38,7 +38,7 @@ public abstract class NTObject extends java.lang.Object {
     }
     /**
      * Get the string of the key in map for NTDict.
-     * @return
+     * @return dictionary key for this NTObject.
      */
     public String toDictKey(){
         return String.format("Type(%d)", type);

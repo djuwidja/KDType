@@ -7,7 +7,7 @@ package com.djuwidja.networktype;
 
 import java.util.Date;
 /**
- * NTString represents list and set interface.
+ * NTList represents list and set interface.
  * @author kennethdjuwidja
  * @since 1.0.0
  * @version 1.0.0
@@ -120,7 +120,7 @@ public class NTList extends NTObject {
         return result;
     }
     
-    public NTDict[] getMQDictList(){
+    public NTDict[] getNTDictList(){
         NTDict[] result = new NTDict[value.length];
         for (int i = 0; i < value.length; i++){
             result[i] = (NTDict) value[i];
@@ -168,7 +168,7 @@ public class NTList extends NTObject {
         return result;
     }
     
-    public NTList[] getMQListList(){
+    public NTList[] getNTListList(){
         NTList[] result = new NTList[value.length];
         for (int i = 0; i < value.length; i++){
             result[i] = (NTList) value[i];

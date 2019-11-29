@@ -4,12 +4,12 @@ import com.djuwidja.networktype.NTBool;
 import com.djuwidja.networktype.NTNull;
 import com.djuwidja.networktype.NTObject;
 /**
- * Transform a bool or a {@link Boolean} into MQBool.
+ * Transform a bool or a {@link Boolean} into {@link NTBool}.
  * @author kennethdjuwidja
  * @since 1.0.0
  * @version 1.0.0
  */
-class MQBoolTransformer implements MQTypeTransformer{
+class NTBoolTransformer implements NTTransformer{
 	@Override
 	public NTObject transform(Object data) throws IllegalAccessException {
 		if (data.getClass() == boolean.class) {

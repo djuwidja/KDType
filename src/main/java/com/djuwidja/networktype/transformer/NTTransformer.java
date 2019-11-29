@@ -8,11 +8,11 @@ package com.djuwidja.networktype.transformer;
 import com.djuwidja.networktype.NTObject;
 
 /**
- * Interface for MQTypeTransformers.
+ * Interface for transformers of {@link NTObject}s.
  * @author kennethdjuwidja
  * @since 1.0.0
  * @version 1.0.0
  */
-public interface MQTypeTransformer {
+public interface NTTransformer {
     public NTObject transform(Object data) throws IllegalAccessException;
 }

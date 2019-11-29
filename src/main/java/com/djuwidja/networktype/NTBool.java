@@ -5,7 +5,7 @@
  */
 package com.djuwidja.networktype;
 /**
- * NTString represents the bool object.
+ * NTBool represents the bool object.
  * @author kennethdjuwidja
  * @since 1.0.0
  * @version 1.0.0

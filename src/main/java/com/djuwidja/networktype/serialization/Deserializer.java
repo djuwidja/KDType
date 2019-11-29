@@ -9,15 +9,15 @@ import org.springframework.stereotype.Service;
 
 import com.djuwidja.networktype.NTObject;
 /**
- * Deserializer for MQType. 
+ * Deserializer for {@link NTObject}. 
  * @author kennethdjuwidja
  */
 @Service
 public class Deserializer {
     /**
-     * Deserialize the byte array into MQType.
+     * Deserialize the byte array into {@link NTObject}.
      * @param byteArray the byte array to be deserialized.
-     * @return MQType results from the deserialization.
+     * @return {@link NTObject} results from the deserialization.
      * @throws DeserializerException fails when unable to deserialize the byte array.
      */
     public NTObject deserialize(byte[] byteArray) throws DeserializerException {

@@ -7,7 +7,7 @@ package com.djuwidja.networktype;
 
 import com.djuwidja.networktype.NTObject;
 /**
- * NTString represents the short, int and long objects.
+ * NTInt represents the short, int and long objects.
  * @author kennethdjuwidja
  * @since 1.0.0
  * @version 1.0.0

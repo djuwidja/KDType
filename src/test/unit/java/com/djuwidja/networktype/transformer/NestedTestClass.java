@@ -5,9 +5,9 @@ import com.djuwidja.networktype.NTDict;
 public class NestedTestClass {
 	public TestClass innerObj = TestClass.buildSuccessTestObj();
 
-	public NTDict toMQDict() {
+	public NTDict toNTDict() {
 		NTDict dict = new NTDict();
-		dict.put("innerObj", innerObj.toMQDict());
+		dict.put("innerObj", innerObj.toNTDict());
 
 		return dict;
 	}

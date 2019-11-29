@@ -7,12 +7,12 @@ import com.djuwidja.networktype.NTList;
 import com.djuwidja.networktype.NTNull;
 import com.djuwidja.networktype.NTObject;
 /**
- * Transform a {@link Set} into MQList.
+ * Transform a {@link Set} into {@link NTList}.
  * @author kennethdjuwidja
  * @since 1.0.0
  * @version 1.0.0
  */
-public class MQListTransformerSet implements MQTypeTransformer {
+public class NTListTransformerSet implements NTTransformer {
 	@Override
 	public NTObject transform(Object data) throws IllegalAccessException {
 		SupportedClassMapper classMapper = SupportedClassMapper.getInstance();
@@ -22,7 +22,7 @@ public class MQListTransformerSet implements MQTypeTransformer {
 	        Iterator<?> iter = dataList.iterator();
 	        if (iter.hasNext()){
 	            Object currObj = iter.next();
-	            MQTypeTransformer transformer = classMapper.getTransformer(currObj.getClass());
+	            NTTransformer transformer = classMapper.getTransformer(currObj.getClass());
 	            if (transformer != null) {
 	            	NTObject[] mqTypeList = new NTObject[dataList.size()];
 	                int currIdx = 0;

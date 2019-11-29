@@ -5,7 +5,7 @@
  */
 package com.djuwidja.networktype;
 /**
- * NTString represents null.
+ * NTNull represents null.
  * @author kennethdjuwidja
  * @since 1.0.0
  * @version 1.0.0

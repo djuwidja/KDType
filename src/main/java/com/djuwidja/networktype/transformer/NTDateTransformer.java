@@ -5,12 +5,12 @@ import java.util.Date;
 import com.djuwidja.networktype.NTDate;
 import com.djuwidja.networktype.NTObject;
 /**
- * Transform a Date into MQDate.
+ * Transform a Date into {@link NTDate}.
  * @author kennethdjuwidja
  * @since 1.0.0
  * @version 1.0.0
  */
-class MQDateTransformer implements MQTypeTransformer {
+class NTDateTransformer implements NTTransformer {
 	@Override
 	public NTObject transform(Object data) throws IllegalAccessException {
 		Date value = (Date) data;

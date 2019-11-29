@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
+import org.bson.types.ObjectId;
 import org.json.JSONArray;
 import org.json.JSONObject;
 /**
@@ -23,7 +24,7 @@ import org.json.JSONObject;
 class SupportedClassMapper {
 	private static SupportedClassMapper instance = null;
 		
-	private HashMap<Class<?>, MQTypeTransformer> supportedDataTypeMap = new HashMap<>();
+	private HashMap<Class<?>, NTTransformer> supportedDataTypeMap = new HashMap<>();
 	/**
 	 * Get the instance of this singleton object.
 	 * @return {@link SupportedClassMapper} the instance.
@@ -38,25 +39,26 @@ class SupportedClassMapper {
 	 * Singleton private constructor.
 	 */
 	private SupportedClassMapper() {
-		supportedDataTypeMap.put(boolean.class, new MQBoolTransformer());
-		supportedDataTypeMap.put(Boolean.class, new MQBoolTransformer());
-		supportedDataTypeMap.put(Date.class, new MQDateTransformer());
-		supportedDataTypeMap.put(double.class, new MQDoubleTransformer());
-		supportedDataTypeMap.put(Double.class, new MQDoubleTransformer());
-		supportedDataTypeMap.put(float.class, new MQFloatTransformer());
-		supportedDataTypeMap.put(Float.class, new MQFloatTransformer());
-		supportedDataTypeMap.put(short.class, new MQIntTransformerShort());
-		supportedDataTypeMap.put(Short.class, new MQIntTransformerShort());
-		supportedDataTypeMap.put(int.class, new MQIntTransformerInt());
-		supportedDataTypeMap.put(Integer.class, new MQIntTransformerInt());
-		supportedDataTypeMap.put(long.class, new MQIntTransformerLong());
-		supportedDataTypeMap.put(Long.class, new MQIntTransformerLong());
-		supportedDataTypeMap.put(String.class, new MQStringTransformer());
-		supportedDataTypeMap.put(Set.class, new MQListTransformerSet());
-		supportedDataTypeMap.put(List.class, new MQListTransformerList());
-		supportedDataTypeMap.put(Map.class, new MQDictTransformer());
-		supportedDataTypeMap.put(JSONObject.class, new MQJSONObjTransformer());
-		supportedDataTypeMap.put(JSONArray.class, new MQJSONArrayTransformer());
+		supportedDataTypeMap.put(boolean.class, new NTBoolTransformer());
+		supportedDataTypeMap.put(Boolean.class, new NTBoolTransformer());
+		supportedDataTypeMap.put(Date.class, new NTDateTransformer());
+		supportedDataTypeMap.put(double.class, new NTDoubleTransformer());
+		supportedDataTypeMap.put(Double.class, new NTDoubleTransformer());
+		supportedDataTypeMap.put(float.class, new NTFloatTransformer());
+		supportedDataTypeMap.put(Float.class, new NTFloatTransformer());
+		supportedDataTypeMap.put(short.class, new NTIntTransformerShort());
+		supportedDataTypeMap.put(Short.class, new NTIntTransformerShort());
+		supportedDataTypeMap.put(int.class, new NTIntTransformerInt());
+		supportedDataTypeMap.put(Integer.class, new NTIntTransformerInt());
+		supportedDataTypeMap.put(long.class, new NTIntTransformerLong());
+		supportedDataTypeMap.put(Long.class, new NTIntTransformerLong());
+		supportedDataTypeMap.put(String.class, new NTStringTransformer());
+		supportedDataTypeMap.put(ObjectId.class, new NTObjectIdTransformer());
+		supportedDataTypeMap.put(Set.class, new NTListTransformerSet());
+		supportedDataTypeMap.put(List.class, new NTListTransformerList());
+		supportedDataTypeMap.put(Map.class, new NTDictTransformer());
+		supportedDataTypeMap.put(JSONObject.class, new NTJSONObjTransformer());
+		supportedDataTypeMap.put(JSONArray.class, new NTJSONArrayTransformer());
 	}
 	/**
 	 * Get transformer from the provided class. Will also attempt to get a transformer from interfaces 
@@ -68,7 +70,7 @@ class SupportedClassMapper {
 	 * @return The transformer of the corresponding class.
 	 * @throws SupportedClassMapperException fails when no transformer can be found.
 	 */
-	public MQTypeTransformer getTransformer(Class<?> cls) throws SupportedClassMapperException {
+	public NTTransformer getTransformer(Class<?> cls) throws SupportedClassMapperException {
 		if (supportedDataTypeMap.containsKey(cls)) {
 			return supportedDataTypeMap.get(cls);
 		}
@@ -86,7 +88,7 @@ class SupportedClassMapper {
 	 * @return The transformer from one of the interfaces.
 	 * @throws SupportedClassMapperException fails when no transformer can be found.
 	 */
-	private MQTypeTransformer getTransformerFromInterfaces(Class<?> cls) throws SupportedClassMapperException {
+	private NTTransformer getTransformerFromInterfaces(Class<?> cls) throws SupportedClassMapperException {
 		Class<?>[] interfaces = cls.getInterfaces();
 		for (Class<?> i : interfaces) {
 			if (supportedDataTypeMap.containsKey(i)) {
@@ -102,7 +104,7 @@ class SupportedClassMapper {
 	 * @return The transformer from the class hierarchy.
 	 * @throws SupportedClassMapperException fails when no transformer can be found.
 	 */
-	private MQTypeTransformer getTransformerFromClassHierarchy(Class<?> cls) throws SupportedClassMapperException {
+	private NTTransformer getTransformerFromClassHierarchy(Class<?> cls) throws SupportedClassMapperException {
 		Class<?> currCls = cls;
 		while (currCls != null && !supportedDataTypeMap.containsKey(currCls)) {
 			currCls = currCls.getSuperclass();

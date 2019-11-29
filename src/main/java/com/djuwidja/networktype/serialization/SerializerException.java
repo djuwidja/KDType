@@ -5,8 +5,10 @@
  */
 package com.djuwidja.networktype.serialization;
 /**
- *
+ * Exception thrown by {@link Serializer}.
  * @author kennethdjuwidja
+ * @since 1.0.0
+ * @version 1.0.0
  */
 public class SerializerException extends Exception {
     /**

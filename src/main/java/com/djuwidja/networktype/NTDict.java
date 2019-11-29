@@ -13,7 +13,7 @@ import java.util.Map.Entry;
 import java.util.AbstractMap.SimpleEntry;
 import java.util.Date;
 /**
- * NTString represents map interface.
+ * NTDict represents map interface.
  * @author kennethdjuwidja
  * @since 1.0.0
  * @version 1.0.0

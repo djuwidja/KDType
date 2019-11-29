@@ -4,19 +4,19 @@ import com.djuwidja.networktype.NTFloat;
 import com.djuwidja.networktype.NTNull;
 import com.djuwidja.networktype.NTObject;
 /**
- * Transform a double or a {@link Double} into MQFloat.
+ * Transform a float or a {@link Float} into {@link NTFloat}.
  * @author kennethdjuwidja
  * @since 1.0.0
  * @version 1.0.0
  */
-public class MQDoubleTransformer implements MQTypeTransformer {
+public class NTFloatTransformer implements NTTransformer {
 	@Override
 	public NTObject transform(Object data) throws IllegalAccessException {
-		if (data.getClass() == double.class) {
-			double value = (double) data;
+		if (data.getClass() == float.class) {
+			float value = (float) data;
 	        return new NTFloat(value);
-		} else if (data.getClass() == Double.class) {
-			double value = ((Double) data).doubleValue();
+		} else if (data.getClass() == Float.class) {
+			float value = ((Float) data).floatValue();
 			return new NTFloat(value);
 		}
 		

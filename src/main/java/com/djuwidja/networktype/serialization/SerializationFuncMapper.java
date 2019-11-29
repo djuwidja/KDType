@@ -62,11 +62,11 @@ class SerializationFuncMapper {
 			return funcMap.get(type);
 		}
 		
-		throw new SerializerException(String.format("MQtype not found %d", type));
+		throw new SerializerException(String.format("NTObject not found %d", type));
 	}	
 }
 /**
- * Serializer for MQNull type. See {@link SerializeFunc}.
+ * Serializer for {@link NTNull} type. See {@link SerializeFunc}.
  * @author kennethdjuwidja
  * @since 1.0.0
  * @version 1.0.0
@@ -79,7 +79,7 @@ class SerializeNull implements SerializeFunc {
     }
 }
 /**
- * Serializer for MQByteArray type. See {@link SerializeFunc}.
+ * Serializer for {@link NTByteArray} type. See {@link SerializeFunc}.
  * @author kennethdjuwidja
  * @since 1.0.0
  * @version 1.0.0
@@ -93,7 +93,7 @@ class SerializeByteArray implements SerializeFunc {
     }	
 }
 /**
- * Serializer for MQInt type. Including long, short and integer See {@link SerializeFunc}.
+ * Serializer for {@link NTInt} type. Including long, short and integer See {@link SerializeFunc}.
  * @author kennethdjuwidja
  * @since 1.0.0
  * @version 1.0.0
@@ -105,8 +105,8 @@ class SerializeInt implements SerializeFunc {
         return serializeInt((NTInt) data);
     }
 	/**
-	 * Serialize MQInt type by trimming the content into short, integer or long when necessary.
-	 * @param data the MQType
+	 * Serialize {@link NTInt} type by trimming the content into short, integer or long when necessary.
+	 * @param data the {@link NTObject}
 	 * @return the SerializedResult
 	 */
 	private SerializeResult serializeInt(NTInt data){
@@ -115,7 +115,7 @@ class SerializeInt implements SerializeFunc {
     }
 }
 /**
- * Serializer for MQString type. See {@link SerializeFunc}.
+ * Serializer for {@link NTString} type. See {@link SerializeFunc}.
  * @author kennethdjuwidja
  * @since 1.0.0
  * @version 1.0.0
@@ -130,7 +130,7 @@ class SerializeString implements SerializeFunc {
     }
 }
 /**
- * Serializer for MQBool type. See {@link SerializeFunc}.
+ * Serializer for {@link NTBool} type. See {@link SerializeFunc}.
  * @author kennethdjuwidja
  * @since 1.0.0
  * @version 1.0.0
@@ -148,7 +148,7 @@ class SerializeBool implements SerializeFunc {
 	}
 }
 /**
- * Serializer for MQFloat type. See {@link SerializeFunc}.
+ * Serializer for {@link NTFloat} type. See {@link SerializeFunc}.
  * @author kennethdjuwidja
  * @since 1.0.0
  * @version 1.0.0
@@ -164,7 +164,7 @@ class SerializeFloat implements SerializeFunc {
     }
 }
 /**
- * Serializer for MQDate type. See {@link SerializeFunc}.
+ * Serializer for {@link NTDate} type. See {@link SerializeFunc}.
  * @author kennethdjuwidja
  * @since 1.0.0
  * @version 1.0.0
@@ -181,7 +181,7 @@ class SerializeDatetime implements SerializeFunc {
     }
 }
 /**
- * Serializer for MQList type. See {@link SerializeFunc}.
+ * Serializer for {@link NTList} type. See {@link SerializeFunc}.
  * @author kennethdjuwidja
  * @since 1.0.0
  * @version 1.0.0
@@ -221,7 +221,7 @@ class SerializeList implements SerializeFunc {
     }
 }
 /**
- * Serializer for MQDict type. See {@link SerializeFunc}.
+ * Serializer for {@link NTDict} type. See {@link SerializeFunc}.
  * @author kennethdjuwidja
  * @since 1.0.0
  * @version 1.0.0

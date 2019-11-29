@@ -6,7 +6,7 @@
 package com.djuwidja.networktype.compression;
 
 /**
- * Exceptions thrown by CompressionUtils
+ * Exceptions thrown by {@link CompressionUtils}.
  * @author kennethdjuwidja
  * @since 1.0.0
  * @version 1.0.0

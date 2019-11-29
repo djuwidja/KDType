@@ -22,7 +22,7 @@ public class TransferDataService {
 	 * @param <T> parametric type of destCls.
 	 * @param src the source object.
 	 * @param destCls the destination class.
-	 * @return <T> the newly created object with fields from src transfered into it.
+	 * @return the newly created object with fields from src transfered into it.
 	 * @throws TransferDataServiceException fails when unable to transfer data.
 	 */
 	public <T> T transferData(Object src, Class<T> destCls) throws TransferDataServiceException {

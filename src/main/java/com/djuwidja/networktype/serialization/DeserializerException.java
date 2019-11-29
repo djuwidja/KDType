@@ -5,7 +5,7 @@
  */
 package com.djuwidja.networktype.serialization;
 /**
- * Exception thrown by Deserializer.
+ * Exception thrown by {@link Deserializer}.
  * @author kennethdjuwidja
  * @since 1.0.0
  * @version 1.0.0

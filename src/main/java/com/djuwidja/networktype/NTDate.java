@@ -7,7 +7,7 @@ package com.djuwidja.networktype;
 
 import java.util.Date;
 /**
- * NTString represents Date object.
+ * NTDate represents Date object.
  * @author kennethdjuwidja
  * @since 1.0.0
  * @version 1.0.0

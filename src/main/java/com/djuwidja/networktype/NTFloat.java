@@ -5,7 +5,7 @@
  */
 package com.djuwidja.networktype;
 /**
- * NTString represents the float and double objects.
+ * NTFloat represents the float and double objects.
  * @author kennethdjuwidja
  * @since 1.0.0
  * @version 1.0.0

@@ -4,12 +4,12 @@ import com.djuwidja.networktype.NTInt;
 import com.djuwidja.networktype.NTNull;
 import com.djuwidja.networktype.NTObject;
 /**
- * Transform a short or a {@link Short} into MQInt.
+ * Transform a short or a {@link Short} into {@link NTInt}.
  * @author kennethdjuwidja
  * @since 1.0.0
  * @version 1.0.0
  */
-class MQIntTransformerShort implements MQTypeTransformer {
+class NTIntTransformerShort implements NTTransformer {
 	@Override
 	public NTObject transform(Object data) throws IllegalAccessException {
 		if (data.getClass() == short.class) {
