@@ -1,0 +1,12 @@
+#JAVA SPRING ECLIPSE
+/.gradle/
+*/.gitignore
+
+/bin/
+*/bin/
+
+/build/
+.classpath
+.project
+.settings/
+.metadata/
