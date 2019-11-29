@@ -1,0 +1,18 @@
+{
+	"testStr": "String",
+	"testInt": 46709394,
+	"testBool": true,
+	"testFloat": 3.141592654,
+	"testList": [
+		1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+	],
+	"testMap": {
+		"testStr": "String",
+		"testInt": 46709394,
+		"testBool": true,
+		"testFloat": 3.141592654,
+		"testList": [
+			1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+		]
+	}
+}

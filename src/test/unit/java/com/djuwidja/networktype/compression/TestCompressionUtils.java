@@ -1,0 +1,46 @@
+package com.djuwidja.networktype.compression;
+
+import java.nio.charset.StandardCharsets;
+
+import org.junit.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.Assert;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
+
+import com.djuwidja.networktype.compression.CompressionUtils;
+import com.djuwidja.networktype.compression.CompressionUtilsException;
+
+@ExtendWith(SpringExtension.class)
+public class TestCompressionUtils {
+	private CompressionUtils compressionUtils = new CompressionUtils();
+	
+	@Test
+	public void testCompression() throws CompressionUtilsException {
+		String originalText = "Ich heiße Otto von Bismarch. Ich komme aus Berlin. Das ist in Nordwesten von Deutschland. Freut mich!";
+		byte[] compressedTextBytes = compressionUtils.compress(originalText.getBytes());
+		byte[] textBytes = compressionUtils.decompress(compressedTextBytes);
+		String processedText = new String(textBytes, StandardCharsets.UTF_8);
+		
+		Assert.assertEquals(originalText, processedText);
+	}
+	
+	@Test
+	public void testCompressionEmpty() throws CompressionUtilsException {
+		byte[] originalBytes = new byte[0];
+		byte[] compressedTextBytes = compressionUtils.compress(originalBytes);
+		byte[] processedBytes = compressionUtils.decompress(compressedTextBytes);
+		
+		Assert.assertEquals(originalBytes.length, processedBytes.length);
+	}
+	
+	@Test
+	public void testCompressionNull() {
+		try {
+			compressionUtils.compress(null);
+			Assert.fail("Exception is not thrown");
+		} 
+		catch (final CompressionUtilsException e) {
+		
+		}
+	}
+}
