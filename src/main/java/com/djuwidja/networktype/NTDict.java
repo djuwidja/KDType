@@ -79,11 +79,11 @@ public class NTDict extends NTObject {
         return (NTDict) getValueObj(key);
     }
     
-    public Float getFloat(String key){
+    public float getFloat(String key){
         return ((NTFloat) getValueObj(key)).getFloat();
     }
     
-    public Double getDouble(String key) {
+    public double getDouble(String key) {
     	return ((NTFloat) getValueObj(key)).getDouble();
     }
     
