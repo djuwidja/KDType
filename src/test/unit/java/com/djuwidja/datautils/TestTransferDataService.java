@@ -10,7 +10,7 @@ import com.djuwidja.datautils.TransferDataServiceException;
 import org.junit.Assert;
 
 @ExtendWith(SpringExtension.class)
-public class TestMigrateDataService {
+public class TestTransferDataService {
 	private TransferDataService migrateDataService = new TransferDataService();
 	
 	@Test
