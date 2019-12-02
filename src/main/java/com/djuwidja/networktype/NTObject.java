@@ -56,4 +56,8 @@ public abstract class NTObject extends java.lang.Object {
      * @return JSON String.
      */
     public abstract String toJsonString();
+    
+    public boolean equals(NTObject obj) {
+    	return this.type == obj.getType();
+    }
 }

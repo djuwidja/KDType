@@ -49,4 +49,14 @@ public class NTFloat extends NTObject {
     public String toJsonString(){
         return toString();
     }
+    
+    @Override
+    public boolean equals(NTObject obj) {
+    	if (!super.equals(obj)) {
+    		return false;
+    	}
+    	
+    	double objDouble = ((NTFloat) obj).getDouble();
+    	return Math.abs(value - objDouble) < 0.00001f;    	
+    }
 }

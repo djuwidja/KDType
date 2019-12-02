@@ -9,7 +9,7 @@ import java.util.LinkedHashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
-
+import java.util.Set;
 import java.util.AbstractMap.SimpleEntry;
 import java.util.Date;
 /**
@@ -211,5 +211,34 @@ public class NTDict extends NTObject {
         }
         
         return String.format("{%s}", content);
+    }
+    
+    @Override
+    public boolean equals(NTObject obj) {
+    	if (!super.equals(obj)) {
+    		return false;
+    	}
+    	
+    	NTDict objDict = (NTDict) obj;
+    	if (this.size() != objDict.size()) {
+    		return false;
+    	}    	
+    	
+    	Set<String> keySet = value.keySet();
+    	for (String key : keySet) {
+    		if (!objDict.containsKey(key)) {
+    			return false;
+    		}
+    		
+    		NTObject valueObj = this.get(key);
+    		NTObject objDictObj = objDict.get(key);
+    		
+    		if (!valueObj.equals(objDictObj)) {
+    			return false;
+    		}
+    	}
+    	
+    	return true;
+    	
     }
 }

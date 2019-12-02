@@ -42,4 +42,14 @@ public class NTDate extends NTObject {
     public String toJsonString(){
         return String.format("%d", value.getTime());
     }
+    
+    @Override
+    public boolean equals(NTObject obj) {
+    	if (!super.equals(obj)) {
+    		return false;
+    	}
+    	
+    	NTDate objVal = (NTDate) obj;
+    	return value.getTime() == objVal.get().getTime();
+    }
 }

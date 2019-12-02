@@ -40,4 +40,13 @@ public class NTString extends NTObject {
     public String toJsonString(){
         return toString();
     }
+    
+    @Override
+    public boolean equals(NTObject obj) {
+    	if (!super.equals(obj)) {
+    		return false;
+    	}
+    	
+    	return mValue.equals(((NTString) obj).get());
+    }
 }

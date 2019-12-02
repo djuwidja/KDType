@@ -30,4 +30,9 @@ public class NTNull extends NTObject {
     public String toJsonString(){
         return "null";
     }
+    
+    @Override
+    public boolean equals(NTObject obj) {
+    	return super.equals(obj);
+    }
 }

@@ -40,5 +40,25 @@ public class NTByteArray extends NTObject{
     public String toJsonString(){
         return toString();
     }
+    
+    @Override
+    public boolean equals(NTObject obj) {
+    	if (!super.equals(obj)) {
+    		return false;
+    	}
+    	
+    	byte[] objVal = ((NTByteArray) obj).value;
+		if (value.length != objVal.length) {
+			return false;	
+		}
+    	
+		for (int i = 0; i < value.length; i++) {
+			if (value[i] != objVal[i]) {
+				return false;
+			}
+		}
+		
+		return true;
+    }
 }
 

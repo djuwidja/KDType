@@ -220,4 +220,27 @@ public class NTList extends NTObject {
         
         return String.format("[%s]", str);
     }
+    
+    @Override
+    public boolean equals(NTObject obj) {
+    	if (!super.equals(obj)) {
+    		return false;
+    	}
+    	
+    	NTList objVal = (NTList) obj;
+    	NTObject[] objList = objVal.value;
+    	if (value.length != objList.length) {
+    		return false;
+    	}
+    	
+    	for (int i = 0; i < value.length; i++) {
+    		NTObject valueNTObj = value[i];
+    		NTObject listNTObj = objList[i];
+    		if (!valueNTObj.equals(listNTObj)) {
+    			return false;
+    		}
+    	}
+    	
+    	return true;
+    }
 }
