@@ -12,53 +12,55 @@ package com.djuwidja.networktype;
  */
 public class NTByteArray extends NTObject{
     private byte[] value;
-    
+    /**
+     * Construct a new NTByteArray
+     * @param v the default value
+     */
     public NTByteArray(byte[] bytearray){
         super(NTObject.TYPE_BYTE_ARRAY);
         value = bytearray;
     }
-    
+
     public byte[] get(){
         return value;
     }
-    
+
     public void set(byte[] bytearray){
         value = bytearray;
     }
-    
+
     @Override
     public String toDictKey(){
         return value.toString();
     }
-    
+
     @Override
     public String toString(){
         return value.toString();
     }
-    
+
     @Override
     public String toJsonString(){
         return toString();
     }
-    
+
     @Override
     public boolean equals(NTObject obj) {
     	if (!super.equals(obj)) {
     		return false;
     	}
-    	
+
     	byte[] objVal = ((NTByteArray) obj).value;
 		if (value.length != objVal.length) {
-			return false;	
+			return false;
 		}
-    	
+
 		for (int i = 0; i < value.length; i++) {
 			if (value[i] != objVal[i]) {
 				return false;
 			}
 		}
-		
+
 		return true;
     }
 }
-
