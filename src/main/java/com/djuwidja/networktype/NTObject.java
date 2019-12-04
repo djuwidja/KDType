@@ -20,7 +20,7 @@ public abstract class NTObject extends java.lang.Object {
     public static final int TYPE_LIST = 100;
     public static final int TYPE_DICT = 101;
     public static final int TYPE_NULL = 999;
-    
+
     private int type;
     /**
      * Constructor, should only be used by child class.
@@ -56,7 +56,11 @@ public abstract class NTObject extends java.lang.Object {
      * @return JSON String.
      */
     public abstract String toJsonString();
-    
+    /**
+     * Check if the target NTObject equals to this one by values.
+     * @param obj the NTObject being check.
+     * @return true if equals, false otherwise.
+     */
     public boolean equals(NTObject obj) {
     	return this.type == obj.getType();
     }
