@@ -12,29 +12,44 @@ import com.djuwidja.networktype.NTObject;
  * @version 1.0.0
  */
 public class NTListTransformerList implements NTTransformer {
-	
-	@Override
-	public NTObject transform(Object data) throws IllegalAccessException {
-		SupportedClassMapper classMapper = SupportedClassMapper.getInstance();
 		
+	@Override
+	public NTObject transform(Object data) throws IllegalAccessException {		
+		List<?> dataList = (List<?>) data;
+        if (dataList.size() > 0){
+            Object firstObj = dataList.get(0);
+            
+            NTObject transformed = transformObject(firstObj);
+            if (transformed.getType() != NTObject.TYPE_NULL) {
+            	NTObject[] mqTypeList = new NTObject[dataList.size()];
+            	mqTypeList[0] = transformed;
+            	for (int i = 1, size = mqTypeList.length; i < size; i++){
+                    Object currObj = dataList.get(i);
+                    mqTypeList[i] = transformObject(currObj);          
+                }
+            	
+            	return new NTList(mqTypeList);
+            }
+        }
+		
+		
+		return new NTNull();
+	}
+	
+	private NTObject transformObject(Object obj) throws IllegalAccessException {
+		SupportedClassMapper classMapper = SupportedClassMapper.getInstance();
 		try {
-			List<?> dataList = (List<?>) data;
-	        if (dataList.size() > 0){
-	            Object firstObj = dataList.get(0);
-	            NTTransformer transformer = classMapper.getTransformer(firstObj.getClass());
-	            if (transformer != null) {
-	            	NTObject[] mqTypeList = new NTObject[dataList.size()];
-	                for (int i = 0, size = mqTypeList.length; i < size; i++){
-	                    Object currObj = dataList.get(i);
-	                    mqTypeList[i] = transformer.transform(currObj);
-	                }
-	                
-	                return new NTList(mqTypeList);
-	            }
-	        }
+			NTTransformer transformer = classMapper.getTransformer(obj.getClass());
+			NTObject objType = transformer.transform(obj);
+			return objType;
 		}
-		catch (final SupportedClassMapperException e) {
-
+		catch (final SupportedClassMapperException spce) {
+			try {
+				return NTObjectTransformerInternal.getInstance().transformObj(obj);
+			}
+			catch (final NTObjectTransformerException nte) {
+				
+			}
 		}
 		
 		return new NTNull();

@@ -5,8 +5,8 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import com.djuwidja.networktype.NTDict;
-import com.djuwidja.networktype.transformer.NTObjectTransformer;
 import com.djuwidja.networktype.transformer.NTObjectTransformerException;
+import com.djuwidja.networktype.transformer.NTObjectTransformer;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -48,7 +48,23 @@ public class TestNTObjectTransformer {
     
     @Test
     public void testNestedObj() throws NTObjectTransformerException {
-    	NestedTestClass testObj = new NestedTestClass();
+    	NestedTestClass testObj = NestedTestClass.buildSuccessTestObj();
+    	NTDict dict = transformerService.transformObj(testObj);
+    	String dictJsonStr = dict.toJsonString();
+    	Assert.assertEquals(testObj.toNTDict().toJsonString(), dictJsonStr);
+    }
+    
+    @Test
+    public void testNestedEmpty() throws NTObjectTransformerException {
+    	NestedTestClass testObj = NestedTestClass.buildEmptyTestObj();
+    	NTDict dict = transformerService.transformObj(testObj);
+    	String dictJsonStr = dict.toJsonString();
+    	Assert.assertEquals(testObj.toNTDict().toJsonString(), dictJsonStr);
+    }
+    
+    @Test
+    public void testNestedWithNullField() throws NTObjectTransformerException {
+    	NestedTestClass testObj = NestedTestClass.buildTestObjWithNulls();
     	NTDict dict = transformerService.transformObj(testObj);
     	String dictJsonStr = dict.toJsonString();
     	Assert.assertEquals(testObj.toNTDict().toJsonString(), dictJsonStr);
