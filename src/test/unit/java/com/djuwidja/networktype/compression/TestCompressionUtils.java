@@ -7,9 +7,6 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.Assert;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import com.djuwidja.networktype.compression.CompressionUtils;
-import com.djuwidja.networktype.compression.CompressionUtilsException;
-
 @ExtendWith(SpringExtension.class)
 public class TestCompressionUtils {
 	private CompressionUtils compressionUtils = new CompressionUtils();

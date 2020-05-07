@@ -4,16 +4,6 @@ import org.junit.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import com.djuwidja.networktype.NTBool;
-import com.djuwidja.networktype.NTByteArray;
-import com.djuwidja.networktype.NTDate;
-import com.djuwidja.networktype.NTDict;
-import com.djuwidja.networktype.NTFloat;
-import com.djuwidja.networktype.NTInt;
-import com.djuwidja.networktype.NTList;
-import com.djuwidja.networktype.NTNull;
-import com.djuwidja.networktype.NTString;
-
 import java.util.Date;
 
 import org.junit.Assert;;

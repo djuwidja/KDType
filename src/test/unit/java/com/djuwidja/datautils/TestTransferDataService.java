@@ -4,9 +4,6 @@ import org.junit.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import com.djuwidja.datautils.TransferDataService;
-import com.djuwidja.datautils.TransferDataServiceException;
-
 import org.junit.Assert;
 
 @ExtendWith(SpringExtension.class)

@@ -5,9 +5,6 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import com.djuwidja.networktype.NTDict;
-import com.djuwidja.networktype.transformer.NTObjectTransformerException;
-import com.djuwidja.networktype.transformer.NTObjectTransformer;
-
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;

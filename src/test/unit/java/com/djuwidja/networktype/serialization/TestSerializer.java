@@ -11,11 +11,6 @@ import com.djuwidja.networktype.NTDict;
 import com.djuwidja.networktype.NTList;
 import com.djuwidja.networktype.NTNull;
 import com.djuwidja.networktype.NTObject;
-import com.djuwidja.networktype.serialization.Deserializer;
-import com.djuwidja.networktype.serialization.DeserializerException;
-import com.djuwidja.networktype.serialization.Serializer;
-import com.djuwidja.networktype.serialization.SerializerException;
-
 import org.junit.Assert;
 
 @ExtendWith(SpringExtension.class)
