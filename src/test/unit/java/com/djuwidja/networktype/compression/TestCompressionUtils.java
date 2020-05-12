@@ -40,4 +40,34 @@ public class TestCompressionUtils {
 		
 		}
 	}
+	
+	@Test
+	public void testCompressionGZip() throws CompressionUtilsException {
+		String originalText = "Ich heiße Otto von Bismarch. Ich komme aus Berlin. Das ist in Nordwesten von Deutschland. Freut mich!";
+		byte[] compressedTextBytes = compressionUtils.compressGZip(originalText.getBytes());
+		byte[] textBytes = compressionUtils.decompressGZip(compressedTextBytes);
+		String processedText = new String(textBytes, StandardCharsets.UTF_8);
+		
+		Assert.assertEquals(originalText, processedText);
+	}
+	
+	@Test
+	public void testCompressionGZipEmpty() throws CompressionUtilsException {
+		byte[] originalBytes = new byte[0];
+		byte[] compressedTextBytes = compressionUtils.compressGZip(originalBytes);
+		byte[] processedBytes = compressionUtils.decompressGZip(compressedTextBytes);
+		
+		Assert.assertEquals(originalBytes.length, processedBytes.length);
+	}
+	
+	@Test
+	public void testCompressionGZipNull() {
+		try {
+			compressionUtils.compressGZip(null);
+			Assert.fail("Exception is not thrown");
+		} 
+		catch (final CompressionUtilsException e) {
+		
+		}
+	}
 }

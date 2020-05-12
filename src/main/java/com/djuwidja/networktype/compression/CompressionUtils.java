@@ -5,8 +5,11 @@
  */
 package com.djuwidja.networktype.compression;
 
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.util.zip.Deflater;
+import java.util.zip.GZIPInputStream;
+import java.util.zip.GZIPOutputStream;
 import java.util.zip.Inflater;
 import org.springframework.stereotype.Component;
 /**
@@ -38,7 +41,7 @@ public class CompressionUtils {
             
             byte[] result = outputStream.toByteArray();
             return result;
-        } catch (Exception e){
+        } catch (final Exception e){
             throw new CompressionUtilsException(e.getMessage());
         }
     }
@@ -49,7 +52,7 @@ public class CompressionUtils {
      * @throws CompressionUtilsException fails when unable to zip byte array.
      */
     public byte[] compress(byte[] data) throws CompressionUtilsException {
-        try {
+        try {        	
             Deflater deflater = new Deflater();
             deflater.setInput(data);
 
@@ -65,8 +68,57 @@ public class CompressionUtils {
 
             byte[] output = outputStream.toByteArray();
             return output;
-        } catch (Exception e){
+        } catch (final Exception e) {
             throw new CompressionUtilsException(e.getMessage());
         }
+    }
+    /**
+     * Decompress the byte array with gzip.
+     * @param data byte array to be decompressed by gzip.
+     * @return byte[].
+     * @throws CompressionUtilsException fails when unable to decompress byte array with gzip.
+     */
+    public byte[] decompressGZip(byte[] data) throws CompressionUtilsException {
+    	try {
+    		ByteArrayInputStream inputStream = new ByteArrayInputStream(data);
+    		GZIPInputStream gzipStream = new GZIPInputStream(inputStream);
+    		ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+    		
+    		byte[] buffer = new byte[1024];
+    		int len;
+    		while ((len = gzipStream.read(buffer)) != -1) {
+    			outputStream.write(buffer, 0, len);
+    		}
+    		outputStream.close();
+    		gzipStream.close();
+    		inputStream.close();
+    		
+    		byte[] output = outputStream.toByteArray();
+    		return output;    		
+    	} catch (final Exception e) {
+    		throw new CompressionUtilsException(e.getMessage());
+    	}
+    }
+    /**
+     * Compress the byte array with gzip.
+     * @param data byte array to be gzip.
+     * @return byte[].
+     * @throws CompressionUtilsException fails when unable to gzip byte array.
+     */
+    public byte[] compressGZip(byte[] data) throws CompressionUtilsException {
+    	try {
+    		ByteArrayOutputStream outputStream = new ByteArrayOutputStream(data.length);
+    		GZIPOutputStream gzipStream = new GZIPOutputStream(outputStream);
+    		for (int i = 0; i < data.length; i++) {
+    			gzipStream.write(data[i]);
+    		}
+    		gzipStream.close();
+    		outputStream.close();
+    		
+    		byte[] output = outputStream.toByteArray();
+    		return output;    		
+    	} catch (final Exception e) {
+    		throw new CompressionUtilsException(e.getMessage());
+    	}
     }
 }
